@@ -1,0 +1,17 @@
+mysql_secure_installation
+#настраиваем постоянный пароль
+#создаем базу как на мастере заливаем свежий дамп
+create database mydb;
+mysql -u root -p mydb < mydb.sql
+
+
+CHANGE MASTER TO MASTER_HOST='212.237.219.8', MASTER_USER='replication', MASTER_PASSWORD='M88zsVH_2D' MASTER_LOG_FILE='из вывода с мастера', MASTER_LOG_POS=из вывода с мастера;
+START SLAVE;
+SHOW SLAVE STATUS\G
+
+
+#Убеждаемся что в базе есть запись 
+use mydb
+select * from test;
+#Добавляем еще одну запись на мастере INSERT INTO test (test_content) values ('testtesttest111111') и проверяем появилась ли она на слейве
+

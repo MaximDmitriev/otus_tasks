@@ -1,0 +1,22 @@
+mysql_secure_installation
+#настраиваем постоянный пароль
+mysql -u root -p
+#входим под новым паролем и создаем тестовую базу и запись в таблице
+create database mydb;
+use mydb;
+create table test( test_id INT NOT NULL AUTO_INCREMENT, test_content VARCHAR(100) NOT NULL, PRIMARY KEY ( test_id ));
+INSERT INTO test (test_content) values ('testtesttest')
+#Делаем дамп базы
+mysqldump -u root -p  mydb > mydb.sql
+
+#Если дамп есть создаем базу и востанавливаем mysql -u root -p mydb < mydb.sql
+
+#Убеждаемся что в базе есть запись 
+use mydb
+select * from test;
+
+#Создаем пользователя для репликации
+CREATE USER 'replication'@'212.237.219.40' IDENTIFIED WITH mysql_native_password BY 'M88zsVH_2D';
+GRANT REPLICATION SLAVE ON *.* TO 'replication'@'212.237.219.40';
+#Выводим позицию бинлога
+SHOW MASTER STATUS;

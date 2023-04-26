@@ -1,0 +1,7 @@
+[Prometheus]
+baseurl = https://packagecloud.io/prometheus-rpm/release/el/7/$basearch/
+enabled = 1
+gpgcheck = 1
+gpgkey = https://packagecloud.io/prometheus-rpm/release/gpgkey
+        https://raw.githubusercontent.com/lest/prometheus-rpm/master/RPM-GPG-KEY-prometheus-rpm
+name = Prometheus repository
