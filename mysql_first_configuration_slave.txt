@@ -5,7 +5,7 @@ create database mydb;
 mysql -u root -p mydb < mydb.sql
 
 
-CHANGE MASTER TO MASTER_HOST='212.237.219.8', MASTER_USER='replication', MASTER_PASSWORD='M88zsVH_2D' MASTER_LOG_FILE='из вывода с мастера', MASTER_LOG_POS=из вывода с мастера;
+CHANGE MASTER TO MASTER_HOST='212.237.219.8', MASTER_USER='replication', MASTER_PASSWORD='M88zsVH_2D', MASTER_LOG_FILE='mysql-bin.000002', MASTER_LOG_POS=из вывода с мастера;
 START SLAVE;
 SHOW SLAVE STATUS\G
 
